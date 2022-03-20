@@ -8,5 +8,12 @@
 import UIKit
 
 class MovieCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var image: UIImageView!
     
+    @IBOutlet weak var title: UILabel!
+    
+    func setup(with movie: Movie) {
+        image.image = movie.image
+        title.text = movie.title
+    }
 }
