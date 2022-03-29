@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     let months = ["January","February","March","April", "May", "June", "July", "August", "September", "October", "November", "December"]
     
@@ -36,6 +36,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         pickerMonth.delegate = self
         pickerMonth.dataSource = self
+        
+        firstName.delegate = self
+        secondName.delegate = self
+        password.delegate = self
     }
     @IBAction func signUpClicked(_ sender: Any) {
         if (firstName.text!.isEmpty || secondName.text!.isEmpty || password.text!.isEmpty) {
@@ -82,6 +86,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             return days[row]
         }
         return months[row]
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     
